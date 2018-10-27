@@ -1,4 +1,4 @@
-package com.comp3004GP13.rummy;
+package core;
 
 import java.util.ArrayList;
 import java.util.Random;
