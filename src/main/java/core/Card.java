@@ -37,8 +37,10 @@ public class Card implements Comparable<Card> {
 	}
 	
 	public Boolean isValidCard() {
-		Pattern pattern = Pattern.compile("([OBRG])([1-13])$");
-        return pattern.matcher(getCardString()).matches();
+		if(!color.contains(this.color)) return false;
+		if(this.getRank() > 13 || this.getRank() < 1) return false;
+		return true;
+		
   
 	}
 	
