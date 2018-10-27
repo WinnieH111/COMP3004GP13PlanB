@@ -52,6 +52,7 @@ public class RummyTileGame {
 							}
 							action = hPlayer.promptAction();
 						}
+						hPlayer.setEndTurn();
 						for(ArrayList<Card> cards:tempPlayedCard) {
 							score+=calScore(cards);
 						}
