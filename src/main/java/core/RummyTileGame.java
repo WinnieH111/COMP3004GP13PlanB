@@ -82,7 +82,7 @@ public class RummyTileGame {
 			}
 
 		}
-	}
+
 
 	public int calScore(ArrayList<Card> cards) {
 		int sum = 0;
