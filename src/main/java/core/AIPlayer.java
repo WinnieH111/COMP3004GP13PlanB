@@ -230,11 +230,6 @@ public class AIPlayer implements Observer, Player{
 		System.out.print("]\n");
 	}
 	
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public Action promptAction(Action[] actions) {
 		// TODO Auto-generated method stub
@@ -255,29 +250,36 @@ public class AIPlayer implements Observer, Player{
 		rack.addAll(cards);
 	}
 
-	@Override
 	public Action promptAction() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public void drawCard(Card card) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	public void setIceBrokeStatus() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public void playedCard(ArrayList<ArrayList<Card>> cards) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void printRack() {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	
 }
