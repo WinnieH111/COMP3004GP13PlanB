@@ -3,7 +3,9 @@ package core;
 import java.util.ArrayList;
 
 public interface Player {
-	public Action promptAction(Action[] actions);
+	public Action promptAction();
+	
+	public void drawCard(Card card);
 
 	public ArrayList<Card> promptMelds() throws Exception;
 	
@@ -16,4 +18,6 @@ public interface Player {
 	public void setEndTurn();
 	
 	public void initialHand(ArrayList<Card> cards);
+	
+	public void playedCard(ArrayList<ArrayList<Card>> cards);
 }

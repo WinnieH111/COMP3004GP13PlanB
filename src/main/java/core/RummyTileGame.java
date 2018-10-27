@@ -6,9 +6,9 @@ import java.util.Scanner;
 public class RummyTileGame {
 	private Deck deck;
 	private Table table;
-	private ArrayList<Player> players; 
+	private ArrayList<Player> players = new ArrayList<Player>(); 
 	private Player hPlayer = new HumanPlayer();
-	private Player aiPlayer = new AIPlayer(table);
+	private Player aiPlayer = new AIPlayer();
 	
 	public RummyTileGame() {
 		deck = new Deck();
@@ -29,19 +29,36 @@ public class RummyTileGame {
 		//while(no one wins)
 		while(true) {
 			if(startPlayer.equals(hPlayer)){
+				ArrayList<ArrayList<Card>> tempPlayedCard = new ArrayList<ArrayList<Card>>();
 				//Play
 				if(!startPlayer.getIceBreakState()) {
-					System.out.println("Please play melds to break the ice");
-					int score = 0;
-					while(score<30) {
-						try {
-							score += calScore(hPlayer.promptMelds());
-						} catch (Exception e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+					System.out.println("Please indicate your action: ");
+					
+					Action action = hPlayer.promptAction();
+					if(action.compareTo(Action.DRAW_CARD)==0) {
+						hPlayer.drawCard(deck.drawCard());
+						hPlayer.setEndTurn();
+					}
+					else if(action.compareTo(Action.ICE_BREAKING)==0) {
+						int score = 0;
+						while(action!=Action.END_TURN) {
+							try {
+								tempPlayedCard.add(hPlayer.promptMelds());
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+							for(ArrayList<Card> cards:tempPlayedCard) {
+								score+=calScore(cards);
+							}
+							action = hPlayer.promptAction();
+						}
+						if(score>30) {
+							//remove the tempPlayedCard from Player's rack
+							hPlayer.playedCard(tempPlayedCard);
+							//Add the tempPlayedCard to tableCard
 						}
 					}
-					
+
 
 
 

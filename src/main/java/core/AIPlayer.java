@@ -21,15 +21,21 @@ public class AIPlayer implements Observer, Player{
 //	private static ArrayList<ArrayList<Card>> groups = new ArrayList<Card>();
     private Deck deck; 
 	
-	AIPlayer(Observable observable){
-	    this.observable = observable;
-        observable.addObserver(this);
+	/*AIPlayer(Observable observable){
+	 	this.observable = observable;
+       	observable.addObserver(this);
 		rack = deck.initialHandCards(14);
 		boolean iceBroke = false; 
 		turn = false; 
 		
 		sortCards();
-	}
+	}*/
+    
+    AIPlayer(){
+    	iceBroke = false;
+    	turn = false;
+    	rack = new ArrayList<Card>(); 
+    }
 	
 	public boolean getIceBreakState() {
 		return iceBroke;
@@ -247,6 +253,24 @@ public class AIPlayer implements Observer, Player{
 
 	public void initialHand(ArrayList<Card> cards) {
 		rack.addAll(cards);
+	}
+
+	@Override
+	public Action promptAction() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void drawCard(Card card) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void playedCard(ArrayList<ArrayList<Card>> cards) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
