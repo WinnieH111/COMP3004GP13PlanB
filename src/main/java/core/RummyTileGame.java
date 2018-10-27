@@ -68,17 +68,20 @@ public class RummyTileGame {
 							hPlayer.drawCard(deck.drawCard());
 						}
 					}
-
-
-				//if start player is not human 
+				}
+				//Player's ice is broken
+				else {
+					Action action = hPlayer.promptAction();
+					if(action.equals(Action.ADD_RUN)|| action.equals(Action.ADD_SET)) {
+						
+					}
+				}
+			}
+			
 				
-
-
 			}
 
 		}
-
-	}
 	}
 
 	public int calScore(ArrayList<Card> cards) {
