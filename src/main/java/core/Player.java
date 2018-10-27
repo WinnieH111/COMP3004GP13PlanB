@@ -20,4 +20,6 @@ public interface Player {
 	public void initialHand(ArrayList<Card> cards);
 	
 	public void playedCard(ArrayList<ArrayList<Card>> cards);
+	
+	public void printRack();
 }

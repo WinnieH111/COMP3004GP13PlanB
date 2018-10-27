@@ -20,20 +20,22 @@ public class RummyTileGame {
 	public void run() {
 		//Who start to play
 		int random = (int)(Math.random() * (players.size()));
-		Player startPlayer = players.get(random);
-		startPlayer.setTurn();
+		//Player currPlayer = players.get(random);
+		Player currPlayer = hPlayer;
+		currPlayer.setTurn();
 		//Distribute initial hand cards
 		for(Player player:players) {
 			player.initialHand(deck.initialHandCards(14));
 		}		
 		//while(no one wins)
 		while(true) {
-			if(startPlayer.equals(hPlayer)){
+			if(currPlayer.equals(hPlayer)){
+				hPlayer.printRack();
 				ArrayList<ArrayList<Card>> tempPlayedCard = new ArrayList<ArrayList<Card>>();
 				//Play
-				if(!startPlayer.getIceBreakState()) {
+				if(!currPlayer.getIceBreakState()) {
+					System.out.println("You are required to break the ice. (type in IB for ice breaking) ");
 					System.out.println("Please indicate your action: ");
-					
 					Action action = hPlayer.promptAction();
 					if(action.compareTo(Action.DRAW_CARD)==0) {
 						hPlayer.drawCard(deck.drawCard());
@@ -43,6 +45,7 @@ public class RummyTileGame {
 						int score = 0;
 						while(action!=Action.END_TURN) {
 							try {
+								System.out.println("Please enter the melds you want to play: ");
 								tempPlayedCard.add(hPlayer.promptMelds());
 							} catch (Exception e) {
 								e.printStackTrace();
@@ -58,8 +61,6 @@ public class RummyTileGame {
 							//Add the tempPlayedCard to tableCard
 						}
 					}
-
-
 
 
 				//if start player is not human 

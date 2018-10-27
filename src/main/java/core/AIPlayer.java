@@ -272,5 +272,12 @@ public class AIPlayer implements Observer, Player{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void printRack() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }

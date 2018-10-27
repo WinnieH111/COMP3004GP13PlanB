@@ -1,6 +1,7 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class HumanPlayer implements Player{
@@ -94,4 +95,14 @@ public class HumanPlayer implements Player{
 	public void initialHand(ArrayList<Card> cards) {
 		rack.addAll(cards);
 	}
-}
+	
+	public void printRack() {
+		System.out.println("You have these cards on hand: ");
+		Collections.sort(rack);
+		for(Card card:rack) {
+			System.out.print(card.getCardString()+" ");
+		}
+		System.out.println("\n=====END OF RACK=====");
+		}
+
+	}
