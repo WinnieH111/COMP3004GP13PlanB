@@ -17,6 +17,8 @@ public interface Player {
 	
 	public void setEndTurn();
 	
+	public void setIceBrokeStatus();
+	
 	public void initialHand(ArrayList<Card> cards);
 	
 	public void playedCard(ArrayList<ArrayList<Card>> cards);

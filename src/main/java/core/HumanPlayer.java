@@ -30,8 +30,13 @@ public class HumanPlayer implements Player{
 	public void setEndTurn() {
 		turn = false; 
 	}
+	
+	public void setIceBrokeStatus() {
+		iceBroke = true;
+	}
 
 	public Action promptAction() {
+		System.out.println("Please indicate your action: IB, DC, PS, PR, AS, AR or ET");
 		Scanner scanner = new Scanner(System.in);
 		String input = scanner.nextLine();
 		try {
@@ -74,7 +79,7 @@ public class HumanPlayer implements Player{
 
 		for(String ss : arr){
 			Card card = new Card(ss.substring(0,1), Integer.parseInt(ss.substring(1)));
-			if(card.isValidCard() && rack.contains(card)) {
+			if(card.isValidCard() && cardIsOnHand(card)) {
 				cards.add(card);
 			}
 			else{
@@ -94,6 +99,15 @@ public class HumanPlayer implements Player{
 	
 	public void initialHand(ArrayList<Card> cards) {
 		rack.addAll(cards);
+	}
+	
+	private boolean cardIsOnHand(Card card) {
+		for(Card c:rack) {
+			if(c.getCardString().equalsIgnoreCase(card.getCardString())) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public void printRack() {
